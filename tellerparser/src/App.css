@@ -28,3 +28,9 @@
   width: 700px;
   height: 100px;
 }
+
+.main-info {
+  margin: 10px;
+  padding: 10px;
+  border: 1px black solid;
+}

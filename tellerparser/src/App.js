@@ -9,8 +9,13 @@ class App extends Component {
         <header className="App-header">
         <h1>Telle-Parser</h1>
         </header>
+        <div className="main-info">
+          <div id='open-drawer'>
+            main info
+          </div>
+        </div>
         <div>
-          <textarea className="main-textarea"></textarea>
+          <textarea className="main-textarea" id="main-text"></textarea>
         </div>
         <div>
           <Button variant="raised" color="primary" id="btn_parser">
