@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './drawer-open-close.css';
+import IDDateTime from './id-date-time';
 
 class DrawerOpenClose extends Component {
     constructor(props) {
@@ -29,10 +30,12 @@ class DrawerOpenClose extends Component {
     render() {
         return (
             <div className={this.state.classStyle}>
-                <div>
-                    <div>Drawer ID: {this.state.drawerId}</div>
-                    <div>Date and Time: {this.state.dateTime}</div>
+                <div className="section-header">
+                    {this.state.classStyle === 'open-drawer' ?
+                        <span><i className="fas fa-lock-open font-awesome-head-img"></i>Open</span> :
+                        <span><i className="fas fa-lock font-awesome-head-img"></i>Close</span>}
                 </div>
+                <IDDateTime drawerId={this.state.drawerId} dateTime={this.state.dateTime} />
             </div>
         );
     }

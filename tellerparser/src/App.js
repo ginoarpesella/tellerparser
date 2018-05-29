@@ -20,22 +20,28 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Telle-Parser</h1>
-        </header>
-        <div className="main-info">
-          <div id="drawer-open-info"></div>
-          <div id="drawer-close-info"></div>
-          <div id="drawer-count"></div>
+      <form>
+        <div className="App">
+          <header className="App-header">
+            <h1>Telle-Parser</h1>
+          </header>
+          <div className="container-fluid">
+            <div className="main-info">
+              <div className="row">
+                <div id="drawer-open-info" className="col"></div>
+                <div id="drawer-close-info" className="col"></div>
+              </div>
+              <div id="drawer-count"></div>
+            </div>
+            <div className="main-text">
+              <textarea name="textarea" className="main-textarea form-control" value={this.state.txt} onChange={this.handleChange}></textarea>
+            </div>
+            <div>
+              <input type="button" value="Parse" className="btn btn-primary btn-parse" onClick={this.handleClick}></input>
+            </div>
+          </div>
         </div>
-        <div>
-          <textarea name="textarea" className="main-textarea" id="main-text" value={this.state.txt} onChange={this.handleChange}></textarea>
-        </div>
-        <div>
-          <input type="button" value="Parse" onClick={this.handleClick}></input>
-        </div>
-      </div>
+      </form>
     );
   }
 

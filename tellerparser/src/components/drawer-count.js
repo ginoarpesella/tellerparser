@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './drawer-count.css';
 import DrawerContents from './drawer-contents'
+import IDDateTime from './id-date-time';
 
 class DrawerCount extends Component {
     constructor(props) {
@@ -41,19 +42,21 @@ class DrawerCount extends Component {
             if (lineSplit[i] !== '') { counts.push(lineSplit[i]); }
         }
 
-        this.setState({ counts : counts });
+        this.setState({ counts: counts });
     }
 
     render() {
         return (
             <div className={this.state.classStyle}>
+                <div className="section-header">
+                    <i className="fas fa-money-bill-alt font-awesome-head-img"></i> Drawer Counts
+                </div>
                 <div>
-                    <div>Drawer ID: {this.state.drawerId}</div>
-                    <div>Date and Time: {this.state.dateTime}</div>
-                    <div>SequenceNumber: {this.state.sequenceNumber}</div>
-                    {this.state.counts.length > 0 ? 
+                    <IDDateTime drawerId={this.state.drawerId} dateTime={this.state.dateTime} />
+                    <div><i className="fas fa-sort-numeric-down font-awesome-img" title="Sequence number"></i> {this.state.sequenceNumber}</div>
+                    {this.state.counts.length > 0 ?
                         <DrawerContents lines={this.state.counts} /> : null}
-                    
+
                 </div>
             </div>
         )
