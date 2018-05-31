@@ -50,7 +50,7 @@ class DrawerContents extends Component {
 
     let arrangedLines = topLines.reverse();
     arrangedLines = arrangedLines.concat(bottomLines);
-    arrangedLines = arrangedLines.concat(noteLines);
+    arrangedLines = arrangedLines.concat(noteLines.reverse());
 
     return this.selectCssClassAndWrap(arrangedLines);
   }
