@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./compcss/drawer-contents.css";
-import ContentLine from "./content-line";
+import DrawerCoinRow from "./drawer-coin-row";
 
 class DrawerContents extends Component {
   constructor(props) {
@@ -10,32 +10,6 @@ class DrawerContents extends Component {
     this.state = {
       lines: props.lines
     };
-  }
-
-  render() {
-    let decodedLines = this.decode();
-    let contentLines = decodedLines.map((line, i) => {
-      let cssName = "";
-      if (i < 4) {
-        cssName = "drawer-top-coin";
-      } else if (i > 7) {
-        cssName = "drawer-note";
-      } else {
-        cssName = "drawer-botton-coin";
-      }
-      return (
-        <ContentLine
-          pos={line.pos}
-          name={line.name}
-          qty={line.qty}
-          val={line.val}
-          cssName={cssName}
-          key={i}
-        />
-      );
-    });
-
-    return <div className="container">{contentLines}</div>;
   }
 
   decode() {
@@ -49,17 +23,67 @@ class DrawerContents extends Component {
         val: sp[4]
       });
     });
-    return decodedLines;
+
+    return this.arrangeContentLines(decodedLines);
   }
 
-  // this will take the pocket number and
-  // work out which css class is needed
-  getCountCSSClass(i) {
-    if (i < 5) {
-      return "drawer-top-coin";
-    } else if (i > 8) {
-      return "drawer-botton-coin";
+  render() {
+    let formattedLines = this.decode();
+    console.log(formattedLines);
+    return <div className="container">{formattedLines}</div>;
+  }
+
+  arrangeContentLines(lines) {
+    let noteLines = [];
+    let topLines = []; // top drawer row
+    let bottomLines = []; // bottom drawer row
+
+    for (let i = 0; i < lines.length; i++) {
+      if (i > 7) {
+        noteLines.push(lines[i]);
+      } else if (i % 2) {
+        topLines.push(lines[i]);
+      } else {
+        bottomLines.push(lines[i]);
+      }
     }
+
+    let arrangedLines = topLines.reverse();
+    arrangedLines = arrangedLines.concat(bottomLines);
+    arrangedLines = arrangedLines.concat(noteLines);
+
+    return this.selectCssClassAndWrap(arrangedLines);
+  }
+
+  // select what css to apply to which div container
+  selectCssClassAndWrap(lines) {
+    let top = lines.slice(0, 4);
+    let bottom = lines.slice(4, 8);
+    let notes = lines.slice(8);
+
+    let result = [];
+    result.push(
+      <DrawerCoinRow
+        lines={top}
+        cssName={"drawer-top-coin"}
+        key={"DrawerCoinRow_1"}
+      />
+    );
+    result.push(
+      <DrawerCoinRow
+        lines={bottom}
+        cssName={"drawer-botton-coin"}
+        key={"DrawerCoinRow_2"}
+      />
+    );
+    result.push(
+      <DrawerCoinRow
+        lines={notes}
+        cssName={"drawer-note"}
+        key={"DrawerCoinRow_3"}
+      />
+    );
+    return result;
   }
 }
 
