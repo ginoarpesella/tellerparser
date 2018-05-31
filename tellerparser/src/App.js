@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DrawerOpenClose from './components/drawer-open-close';
 import DrawerCount from './components/drawer-count';
-import * as _parer from './parer.js';
+import * as _parer from './scripts/parer.js';
 import ReactDOM from 'react-dom';
 
 class App extends Component {

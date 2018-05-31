@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './content-line.css';
+import './compcss/content-line.css';
 
 class ContentLine extends Component {
     render() {
         return (
-            <div className="col">
+            <div className={this.props.cssName}>
                 <span> {this.props.pos}</span>
                 <span> {this.props.name}</span>
                 <span>Quantity: {this.props.qty}</span>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './drawer-count.css';
+import './compcss/drawer-count.css';
 import DrawerContents from './drawer-contents'
 import IDDateTime from './id-date-time';
 
@@ -53,7 +53,7 @@ class DrawerCount extends Component {
                 </div>
                 <div>
                     <IDDateTime drawerId={this.state.drawerId} dateTime={this.state.dateTime} />
-                    <div><i className="fas fa-sort-numeric-down font-awesome-img" title="Sequence number"></i> {this.state.sequenceNumber}</div>
+                    <div><i className="fas fa-sort-numeric-up font-awesome-img" title="Sequence number"></i> {this.state.sequenceNumber}</div>
                     {this.state.counts.length > 0 ?
                         <DrawerContents lines={this.state.counts} /> : null}
 
