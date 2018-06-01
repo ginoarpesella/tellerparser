@@ -29,7 +29,6 @@ class DrawerContents extends Component {
 
   render() {
     let formattedLines = this.decode();
-    console.log(formattedLines);
     return <div className="container">{formattedLines}</div>;
   }
 
