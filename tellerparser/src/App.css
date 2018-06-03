@@ -1,3 +1,7 @@
+html, body {
+  background-color: rgb(255, 255, 255);
+}
+
 .App {
   text-align: center;
   font-family: Tahoma, Verdana, Segoe, sans-serif;
@@ -19,7 +23,6 @@
   font-size: 2.5em;
 }
 
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -33,14 +36,14 @@
   width: 100%;
   height: 200px;
   font-size: 12px;
+  max-width: 1015px;
 }
 
 .main-info {
   margin: 10px;
   padding: 10px;
-  border: 1px black solid;
   font-size: 0.9em;
-  
+  max-width: 990px;
 }
 
 .btn-parse {
@@ -49,12 +52,13 @@
 
 .font-awesome-img {
   font-size: 1.2em; 
-  color: rgb(116, 140, 158);
+  color: rgb(7, 52, 87);
 }
 
 .font-awesome-head-img {
-  font-size: 1.6em; 
-  color: rgb(216, 231, 5);
+  padding-right: 5px;
+  font-size: 1.2em; 
+  color: rgb(33, 105, 240);
 }
 
 .section-header {

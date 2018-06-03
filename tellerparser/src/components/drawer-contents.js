@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./compcss/drawer-contents.css";
-import DrawerCoinRow from "./drawer-coin-row";
+import DrawerCountRow from "./drawer-count-row";
 
 class DrawerContents extends Component {
   constructor(props) {
     super(props);
-    this.decode = this.decode.bind(this);
+    //this.decode = this.decode.bind(this);
 
     this.state = {
       lines: props.lines
@@ -29,7 +29,20 @@ class DrawerContents extends Component {
 
   render() {
     let formattedLines = this.decode();
-    return <div className="container">{formattedLines}</div>;
+
+    return (
+      <div className="container drawer-contents">
+        <div className="row">
+          <div className="col-7">
+            <div className="container">
+              <div className="row">{formattedLines[0]}</div>
+              <div className="row">{formattedLines[1]}</div>
+            </div>
+          </div>
+          <div className="col-5">{formattedLines[2]}</div>
+        </div>
+      </div>
+    );
   }
 
   arrangeContentLines(lines) {
@@ -62,23 +75,26 @@ class DrawerContents extends Component {
 
     let result = [];
     result.push(
-      <DrawerCoinRow
+      <DrawerCountRow
         lines={top}
-        cssName={"drawer-top-coin"}
+        cssName={"drawer-coin"}
+        cssPocket={"coin-pocket"}
         key={"DrawerCoinRow_1"}
       />
     );
     result.push(
-      <DrawerCoinRow
+      <DrawerCountRow
         lines={bottom}
-        cssName={"drawer-botton-coin"}
+        cssName={"drawer-coin"}
+        cssPocket={"coin-pocket"}
         key={"DrawerCoinRow_2"}
       />
     );
     result.push(
-      <DrawerCoinRow
+      <DrawerCountRow
         lines={notes}
         cssName={"drawer-note"}
+        cssPocket={"note-pocket"}
         key={"DrawerCoinRow_3"}
       />
     );

@@ -1,8 +1,11 @@
 .open-drawer {
-    background-color: rgb(253, 253, 216);
+    margin-bottom: 15px;
+    color: rgb(20, 20, 20);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
 
 .close-drawer {
-    background-color: rgb(194, 255, 240);
+    margin-bottom: 15px;
+    color: rgb(20, 20, 20);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
-

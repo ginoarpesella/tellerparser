@@ -1,0 +1,69 @@
+/* coin pockets */
+.drawer-coin {
+    color: rgb(229, 226, 226);
+    padding-top: 4px;
+}
+
+.drawer-coin > div {
+    display: inline-block;
+}
+
+.coin-pocket {
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 5px;
+    border: solid rgb(229, 226, 226) 1px;
+    margin: 6px;
+
+}
+
+.coin-pocket-header {
+    font-size: 1.5em;
+}
+
+.coin-pocket-header i {
+    padding: 4px;
+    font-size: 1em;
+    color: #f9fc50;
+}
+
+.coin-pocket-body {
+    font-size: 2em;
+}
+/* coin pockets - end */
+
+/* note section */
+.drawer-note {
+    color: rgb(229, 226, 226);
+}
+
+.note-pocket {
+    border-radius: 4px;
+    border: solid rgb(229, 226, 226) 1px;
+    margin: 5px;
+}
+
+.note-pocket div {
+    display: inline-block;
+}
+
+.note-pocket-header {
+    width: 50%;
+    font-size: 1.2em;
+    background-color: rgb(41, 41, 41);
+    text-align: left;
+}
+
+.note-pocket-body {
+    font-size: 1em;
+    width: 50%;
+    text-align: center;
+}
+
+.note-pocket-header i {
+    padding: 4px;
+    font-size: 1em;
+    color: #50fc50;
+}
+
+/* note section - end */

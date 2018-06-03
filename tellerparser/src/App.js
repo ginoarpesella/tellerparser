@@ -21,21 +21,17 @@ class App extends Component {
     return (
       <form>
         <div className="App">
-          <header className="App-header">
-            <h1>Telle-Parser</h1>
-          </header>
-          <div className="container-fluid">
+          <div className="container">
             <div className="main-info">
-              <div className="row">
-                <div id="drawer-open-info" className="col" />
-                <div id="drawer-close-info" className="col" />
-              </div>
+              <div id="drawer-open-info" className="col" />
+              <div id="drawer-close-info" className="col" />
               <div id="drawer-count" />
             </div>
             <div className="main-text">
               <textarea
                 name="textarea"
                 className="main-textarea form-control"
+                placeholder="-- put stuff in here --"
                 value={this.state.txt}
                 onChange={this.handleChange}
               />

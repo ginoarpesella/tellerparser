@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import "./compcss/drawer-coin-row.css";
+import "./compcss/drawer-count-row.css";
 import ContentLine from "./content-line";
 
 class DrawerCountRow extends Component {
   render() {
     return (
       <div className={this.props.cssName}>
-        {this.createContentLines(this.props.lines)}
+        {this.createContentLines(this.props.lines, this.props.cssPocket)}
       </div>
     );
   }
 
-  createContentLines(objLines) {
+  createContentLines(objLines, cssClass) {
     let componentList = [];
     for (let i = 0; i < objLines.length; i++) {
       componentList.push(
@@ -21,6 +21,7 @@ class DrawerCountRow extends Component {
           qty={objLines[i].qty}
           val={objLines[i].val}
           key={objLines[i].pos}
+          cssName={cssClass}
         />
       );
     }
