@@ -25,7 +25,7 @@ export function getDateTime(txt) {
   if (lineSplit.length === 0) {
     return;
   }
-  return new Date(lineSplit[1]).toLocaleString();
+  return new Date(lineSplit[1]);
 }
 
 // extracts the sequence number out of a string
@@ -51,4 +51,21 @@ export function getCounts(txt) {
     }
   }
   return counts;
+}
+
+export function getDrawerTotal(txt) {
+  let counts = getCounts(txt);
+  if (counts === undefined) {
+    return;
+  }
+  let values = counts.map((v, i) => {
+    let row = v.split(",");
+    return row[4];
+  });
+
+  let total = values.reduce((p, c, i) => {
+    return isNaN(c) ? parseFloat(p) + 0.0 : parseFloat(p) + parseFloat(c);
+  });
+
+  return total;
 }

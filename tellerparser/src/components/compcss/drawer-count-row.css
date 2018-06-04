@@ -9,12 +9,11 @@
 }
 
 .coin-pocket {
-    min-width: 80px;
+    min-width: 100px;
     min-height: 80px;
     border-radius: 5px;
     border: solid rgb(229, 226, 226) 1px;
     margin: 6px;
-
 }
 
 .coin-pocket-header {
@@ -28,7 +27,7 @@
 }
 
 .coin-pocket-body {
-    font-size: 2em;
+    font-size: 1.5em;
 }
 /* coin pockets - end */
 

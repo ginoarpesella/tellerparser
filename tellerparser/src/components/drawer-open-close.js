@@ -4,10 +4,6 @@ import IDDateTime from "./id-date-time";
 import * as _parer from "../scripts/parer.js";
 
 class DrawerOpenClose extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={this.props.classStyle}>
@@ -22,10 +18,7 @@ class DrawerOpenClose extends Component {
             </span>
           )}
         </div>
-        <IDDateTime
-          drawerId={_parer.getDrawerId(this.props.txt)}
-          dateTime={_parer.getDateTime(this.props.txt)}
-        />
+        <IDDateTime dateTime={_parer.getDateTime(this.props.txt)} />
       </div>
     );
   }

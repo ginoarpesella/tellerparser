@@ -3,10 +3,6 @@ import "./compcss/drawer-contents.css";
 import DrawerCountRow from "./drawer-count-row";
 
 class DrawerContents extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   decode() {
     let decodedLines = [];
     this.props.lines.forEach(line => {

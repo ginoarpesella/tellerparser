@@ -5,17 +5,13 @@ import IDDateTime from "./id-date-time";
 import * as _parer from "../scripts/parer.js";
 
 class DrawerCount extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={this.props.classStyle}>
         <div className="section-header">
           <i className="fas fa-money-bill-alt font-awesome-head-img" /> Drawer
           Counts{" "}
-          <span>
+          <span className="sequenceNumber">
             <i
               className="fas fa-sort-numeric-up font-awesome-img"
               title="Sequence number"
@@ -24,10 +20,7 @@ class DrawerCount extends Component {
           </span>
         </div>
         <div>
-          <IDDateTime
-            drawerId={_parer.getDrawerId(this.props.txt)}
-            dateTime={_parer.getDateTime(this.props.txt)}
-          />
+          <IDDateTime dateTime={_parer.getDateTime(this.props.txt)} />
           <DrawerContents lines={_parer.getCounts(this.props.txt)} />
         </div>
       </div>

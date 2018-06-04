@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import DrawerOpenClose from "./components/drawer-open-close";
 import DrawerCount from "./components/drawer-count";
+import DrawerStats from "./components/drawer-stats";
 import * as _parer from "./scripts/parer.js";
-// import ReactDOM from "react-dom";
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class App extends Component {
       countShow: false
     };
   }
+
   render() {
     return (
       <form>
@@ -44,6 +45,15 @@ class App extends Component {
                 <DrawerCount
                   txt={this.state.countTxt}
                   classStyle="count-drawer"
+                />
+              ) : null}
+              {this.state.openShow |
+              this.state.closeShow |
+              this.state.countShow ? (
+                <DrawerStats
+                  openTxt={this.state.openTxt}
+                  closeTxt={this.state.closeTxt}
+                  countTxt={this.state.countTxt}
                 />
               ) : null}
             </div>

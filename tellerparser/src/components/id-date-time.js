@@ -5,12 +5,9 @@ class IDDateTime extends Component {
   render() {
     return (
       <div>
-        <span className="info-item" title="Drawer Id">
-          <i className="fas fa-id-card font-awesome-img" />{" "}
-          {this.props.drawerId}
-        </span>
         <span className="info-item" title="Date and time">
-          <i className="fas fa-clock font-awesome-img" /> {this.props.dateTime}
+          <i className="fas fa-clock font-awesome-img" />{" "}
+          {this.props.dateTime.toLocaleString()}
         </span>
       </div>
     );
