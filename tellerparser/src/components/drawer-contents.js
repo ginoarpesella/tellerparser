@@ -5,16 +5,11 @@ import DrawerCountRow from "./drawer-count-row";
 class DrawerContents extends Component {
   constructor(props) {
     super(props);
-    //this.decode = this.decode.bind(this);
-
-    this.state = {
-      lines: props.lines
-    };
   }
 
   decode() {
     let decodedLines = [];
-    this.state.lines.forEach(line => {
+    this.props.lines.forEach(line => {
       let sp = line.split(",");
       decodedLines.push({
         pos: sp[0],

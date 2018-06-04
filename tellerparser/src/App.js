@@ -3,18 +3,23 @@ import "./App.css";
 import DrawerOpenClose from "./components/drawer-open-close";
 import DrawerCount from "./components/drawer-count";
 import * as _parer from "./scripts/parer.js";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+
     this.state = {
       txt: "",
       openTxt: "",
+      openShow: false,
       closeTxt: "",
-      countTxt: ""
+      closeShow: false,
+      countTxt: "",
+      countShow: false
     };
   }
   render() {
@@ -23,9 +28,24 @@ class App extends Component {
         <div className="App">
           <div className="container">
             <div className="main-info">
-              <div id="drawer-open-info" className="col" />
-              <div id="drawer-close-info" className="col" />
-              <div id="drawer-count" />
+              {this.state.openShow ? (
+                <DrawerOpenClose
+                  txt={this.state.openTxt}
+                  classStyle="open-drawer"
+                />
+              ) : null}
+              {this.state.closeShow ? (
+                <DrawerOpenClose
+                  txt={this.state.closeTxt}
+                  classStyle="close-drawer"
+                />
+              ) : null}
+              {this.state.countShow ? (
+                <DrawerCount
+                  txt={this.state.countTxt}
+                  classStyle="count-drawer"
+                />
+              ) : null}
             </div>
             <div className="main-text">
               <textarea
@@ -39,9 +59,16 @@ class App extends Component {
             <div>
               <input
                 type="button"
+                ref="main_textarea"
                 value="Parse"
                 className="btn btn-primary btn-parse"
                 onClick={this.handleClick}
+              />
+              <input
+                type="button"
+                value="Clear"
+                className="btn btn-primary btn-parse"
+                onClick={this.handleClear}
               />
             </div>
           </div>
@@ -57,13 +84,13 @@ class App extends Component {
     let foundCount = false;
 
     cmds.forEach(cmd => {
-      if (cmd.endsWith("OPEN")) {
+      if (cmd.trim().endsWith("OPEN")) {
         this.setState({ openTxt: cmd });
         foundOpen = true;
         return;
       }
 
-      if (cmd.endsWith("CLOSED")) {
+      if (cmd.trim().endsWith("CLOSED")) {
         this.setState({ closeTxt: cmd });
         foundClose = true;
         return;
@@ -89,38 +116,37 @@ class App extends Component {
 
   handleClick() {
     if (this.state.openTxt !== "") {
-      const elementOpen = (
-        <DrawerOpenClose txt={this.state.openTxt} classStyle="open-drawer" />
-      );
-      ReactDOM.render(elementOpen, document.getElementById("drawer-open-info"));
+      this.setState({ openShow: true });
     } else {
-      ReactDOM.unmountComponentAtNode(
-        document.getElementById("drawer-open-info")
-      );
+      this.setState({ openShow: false });
     }
 
     if (this.state.closeTxt !== "") {
-      const elementClose = (
-        <DrawerOpenClose txt={this.state.closeTxt} classStyle="close-drawer" />
-      );
-      ReactDOM.render(
-        elementClose,
-        document.getElementById("drawer-close-info")
-      );
+      this.setState({ closeShow: true });
     } else {
-      ReactDOM.unmountComponentAtNode(
-        document.getElementById("drawer-close-info")
-      );
+      this.setState({ closeShow: false });
     }
 
     if (this.state.countTxt !== "") {
-      const elementCount = (
-        <DrawerCount txt={this.state.countTxt} classStyle="count-drawer" />
-      );
-      ReactDOM.render(elementCount, document.getElementById("drawer-count"));
+      this.setState({ countShow: true });
     } else {
-      ReactDOM.unmountComponentAtNode(document.getElementById("drawer-count"));
+      this.setState({ countShow: false });
     }
+  }
+
+  handleClear() {
+    let text = this.refs.main_textarea;
+    text.value = "";
+
+    this.setState({
+      openShow: false,
+      closeShow: false,
+      countShow: false,
+      openTxt: "",
+      closeTxt: "",
+      countTxt: "",
+      txt: ""
+    });
   }
 }
 

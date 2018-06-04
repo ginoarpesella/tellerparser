@@ -1,39 +1,18 @@
 import React, { Component } from "react";
 import "./compcss/drawer-open-close.css";
 import IDDateTime from "./id-date-time";
+import * as _parer from "../scripts/parer.js";
 
 class DrawerOpenClose extends Component {
   constructor(props) {
     super(props);
-    this.decode = this.decode.bind(this);
-
-    this.state = {
-      txt: props.txt,
-      classStyle: props.classStyle,
-      drawerId: "",
-      dateTime: ""
-    };
-  }
-
-  componentDidMount() {
-    this.decode();
-  }
-
-  decode() {
-    let lineSplit = this.state.txt.split(";");
-    if (lineSplit.length === 0) {
-      return;
-    }
-
-    this.setState({ drawerId: lineSplit[0].split(" ").slice(-1)[0] });
-    this.setState({ dateTime: new Date(lineSplit[1]).toLocaleString() });
   }
 
   render() {
     return (
-      <div className={this.state.classStyle}>
+      <div className={this.props.classStyle}>
         <div className="section-header">
-          {this.state.classStyle === "open-drawer" ? (
+          {this.props.classStyle === "open-drawer" ? (
             <span>
               <i className="fas fa-lock-open font-awesome-head-img" />Open
             </span>
@@ -44,8 +23,8 @@ class DrawerOpenClose extends Component {
           )}
         </div>
         <IDDateTime
-          drawerId={this.state.drawerId}
-          dateTime={this.state.dateTime}
+          drawerId={_parer.getDrawerId(this.props.txt)}
+          dateTime={_parer.getDateTime(this.props.txt)}
         />
       </div>
     );
