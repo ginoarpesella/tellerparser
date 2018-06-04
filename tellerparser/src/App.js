@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import DrawerOpenClose from "./components/drawer-open-close";
+import DrawerCount from "./components/drawer-count";
+import DrawerStats from "./components/drawer-stats";
+import DrawerEventList from "./components/drawer-event-list";
 import * as _parer from "./scripts/parer.js";
 
 class App extends Component {
