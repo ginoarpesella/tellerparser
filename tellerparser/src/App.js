@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import DrawerOpenClose from "./components/drawer-open-close";
-import DrawerCount from "./components/drawer-count";
-import DrawerStats from "./components/drawer-stats";
+
 import * as _parer from "./scripts/parer.js";
 
 class App extends Component {
@@ -28,35 +26,6 @@ class App extends Component {
       <form>
         <div className="App">
           <div className="container">
-            <div className="main-info">
-              {this.state.openShow ? (
-                <DrawerOpenClose
-                  txt={this.state.openTxt}
-                  classStyle="open-drawer"
-                />
-              ) : null}
-              {this.state.closeShow ? (
-                <DrawerOpenClose
-                  txt={this.state.closeTxt}
-                  classStyle="close-drawer"
-                />
-              ) : null}
-              {this.state.countShow ? (
-                <DrawerCount
-                  txt={this.state.countTxt}
-                  classStyle="count-drawer"
-                />
-              ) : null}
-              {this.state.openShow |
-              this.state.closeShow |
-              this.state.countShow ? (
-                <DrawerStats
-                  openTxt={this.state.openTxt}
-                  closeTxt={this.state.closeTxt}
-                  countTxt={this.state.countTxt}
-                />
-              ) : null}
-            </div>
             <div className="main-text">
               <textarea
                 name="textarea"
