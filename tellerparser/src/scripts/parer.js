@@ -1,3 +1,64 @@
+//
+
+export function parserTxt(txt) {}
+
+function cleanTxt(txt) {
+  let lines = getCommands(txt);
+  let eventLines = getEventLines(lines);
+  let eventLines = eventLines.reverse(); // we reserse here so
+  let sets = createSets(eventLines);
+}
+
+// gets only the lines we want to work with and their line number
+function getEventLines(lines) {
+  let cleanLines = [];
+  cmds.map((cmd, i) => {
+    if (cmd.trim().endsWith(";OPEN")) {
+      cleanLines.push({ cmd: cmd, lineNumber: i });
+      return;
+    }
+
+    if (cmd.trim().endsWith(";CLOSED")) {
+      cleanLines.push({ cmd: cmd, lineNumber: i });
+      return;
+    }
+
+    if (cmd.includes(";COUNT;")) {
+      cleanLines.push({ cmd: cmd, lineNumber: i });
+    }
+  });
+  return cleanLines;
+}
+
+// creates sets of events between each opened event
+function createSets(eventLines) {
+  let sets = [];
+  while (eventLines.length > 0) {
+    let set = [];
+    for (let i = 0; i < eventLines.length; i++) {
+      if (eventLines[i].cmd.trim().endsWith(";OPEN")) {
+        set.push(eventLines[i]);
+        return;
+      }
+
+      if (eventLines[i].cmd.trim().endsWith(";CLOSED")) {
+        set.push(eventLines[i]);
+        break;
+      }
+
+      if (eventLines[i].cmd.includes(";COUNT;")) {
+        set.push(eventLines[i]);
+        return;
+      }
+    }
+    sets.push(set);
+    //this will remove the lines we have just placed in our set
+    eventLines = eventLines.slice(set.length, eventLines.length);
+  }
+
+  return eventLines;
+}
+
 // splits all the commands by new line
 export function getCommands(txt) {
   const txtSplit = txt.split(/\n/);

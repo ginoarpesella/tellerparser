@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import DrawerOpenClose from "./components/drawer-open-close";
-import DrawerCount from "./components/drawer-count";
-import DrawerStats from "./components/drawer-stats";
 import DrawerEventList from "./components/drawer-event-list";
 import * as _parer from "./scripts/parer.js";
 
@@ -14,13 +11,7 @@ class App extends Component {
     this.handleClear = this.handleClear.bind(this);
 
     this.state = {
-      txt: "",
-      openTxt: "",
-      openShow: false,
-      closeTxt: "",
-      closeShow: false,
-      countTxt: "",
-      countShow: false
+      txt: ""
     };
   }
 
@@ -29,6 +20,7 @@ class App extends Component {
       <form>
         <div className="App">
           <div className="container">
+            <DrawerEventList />
             <div className="main-text">
               <textarea
                 name="textarea"
@@ -121,12 +113,6 @@ class App extends Component {
     text.value = "";
 
     this.setState({
-      openShow: false,
-      closeShow: false,
-      countShow: false,
-      openTxt: "",
-      closeTxt: "",
-      countTxt: "",
       txt: ""
     });
   }
