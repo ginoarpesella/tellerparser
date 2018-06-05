@@ -1,59 +1,22 @@
+// everthings_equal is a function that takes an array
+const everythings_equal = array => array.every(a => a === array[0]);
+
+class Set {
+  constructor(cmd, lNo) {
+    this.cmd = cmd;
+    this.lineNumber = lNo;
+  }
+}
+
 export function parserTxt(txt) {
   let lines = getCommands(txt);
   let eventLines = getEventLines(lines);
-  let eventLines = eventLines.reverse(); // we reserse here so
+  if (eventLines === undefined) {
+    return;
+  }
+  eventLines.reverse(); // we reserse here so to caputer close as a set
   let sets = createSets(eventLines);
   return sets;
-}
-
-// gets only the lines we want to work with and their line number
-function getEventLines(lines) {
-  let cleanLines = [];
-  cmds.map((cmd, i) => {
-    if (cmd.trim().endsWith(";OPEN")) {
-      cleanLines.push({ cmd: cmd, lineNumber: i });
-      return;
-    }
-
-    if (cmd.trim().endsWith(";CLOSED")) {
-      cleanLines.push({ cmd: cmd, lineNumber: i });
-      return;
-    }
-
-    if (cmd.includes(";COUNT;")) {
-      cleanLines.push({ cmd: cmd, lineNumber: i });
-    }
-  });
-  return cleanLines;
-}
-
-// creates sets of events between each opened event
-function createSets(eventLines) {
-  let sets = [];
-  while (eventLines.length > 0) {
-    let set = [];
-    for (let i = 0; i < eventLines.length; i++) {
-      if (eventLines[i].cmd.trim().endsWith(";OPEN")) {
-        set.push(eventLines[i]);
-        return;
-      }
-
-      if (eventLines[i].cmd.trim().endsWith(";CLOSED")) {
-        set.push(eventLines[i]);
-        break;
-      }
-
-      if (eventLines[i].cmd.includes(";COUNT;")) {
-        set.push(eventLines[i]);
-        return;
-      }
-    }
-    sets.push(set);
-    //this will remove the lines we have just placed in our set
-    eventLines = eventLines.slice(set.length, eventLines.length);
-  }
-
-  return eventLines;
 }
 
 // splits all the commands by new line
@@ -126,4 +89,70 @@ export function getDrawerTotal(txt) {
   });
 
   return total;
+}
+
+export function isOpen(line) {
+  return line.trim().endsWith(";OPEN") ? true : false;
+}
+
+export function isClose(line) {
+  return line.trim().endsWith(";CLOSED") ? true : false;
+}
+
+export function isCount(line) {
+  return line.includes(";COUNT;") ? true : false;
+}
+
+export function validate_drawerIds(lines) {
+  return everythings_equal(lines) ? true : false;
+}
+
+// gets only the lines we want to work with and their line number
+function getEventLines(lines) {
+  let cleanLines = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    if (isOpen(lines[i])) {
+      cleanLines.push(new Set(lines[i], i));
+    }
+
+    if (isClose(lines[i])) {
+      cleanLines.push(new Set(lines[i], i));
+    }
+
+    if (isCount(lines[i])) {
+      cleanLines.push(new Set(lines[i], i));
+    }
+  }
+
+  return cleanLines;
+}
+
+// creates sets of events between each opened event
+function createSets(eventLines) {
+  let sets = [];
+  while (eventLines.length > 0) {
+    let set = [];
+    for (let i = 0; i < eventLines.length; i++) {
+      if (isOpen(eventLines[i].cmd)) {
+        set.push(eventLines[i]);
+        break;
+      }
+
+      if (isClose(eventLines[i].cmd)) {
+        set.push(eventLines[i]);
+        continue;
+      }
+
+      if (isCount(eventLines[i].cmd)) {
+        set.push(eventLines[i]);
+        continue;
+      }
+    }
+    sets.push(set);
+    //this will remove the lines we have just placed in our set
+    eventLines = eventLines.slice(set.length, eventLines.length);
+  }
+
+  return sets;
 }

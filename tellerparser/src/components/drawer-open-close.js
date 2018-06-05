@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./compcss/drawer-open-close.css";
 import IDDateTime from "./id-date-time";
+import LineNumber from "./line-number";
 import * as _parer from "../scripts/parer.js";
 
 class DrawerOpenClose extends Component {
@@ -19,6 +20,7 @@ class DrawerOpenClose extends Component {
           )}
         </div>
         <IDDateTime dateTime={_parer.getDateTime(this.props.txt)} />
+        <LineNumber lineNumber={this.props.lineNumber} />
       </div>
     );
   }

@@ -1,0 +1,10 @@
+.list-title-badge {
+  font-size: 0.5em;
+  float: right;
+  margin-top: 6px;
+}
+
+.raw-drawer-txt {
+  padding: 5px;
+  font: 0.5em;
+}

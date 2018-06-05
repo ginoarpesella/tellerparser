@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./compcss/drawer-count.css";
 import DrawerContents from "./drawer-contents";
 import IDDateTime from "./id-date-time";
+import LineNumber from "./line-number";
 import * as _parer from "../scripts/parer.js";
 
 class DrawerCount extends Component {
@@ -21,6 +22,7 @@ class DrawerCount extends Component {
         </div>
         <div>
           <IDDateTime dateTime={_parer.getDateTime(this.props.txt)} />
+          <LineNumber lineNumber={this.props.lineNumber} />
           <DrawerContents lines={_parer.getCounts(this.props.txt)} />
         </div>
       </div>

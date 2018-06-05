@@ -23,9 +23,9 @@ class App extends Component {
         <div className="App">
           <div className="container">
             {this.state.showEvents ? (
-              <div id="accordion" role="tablist">
+              <div id="accordion" role="tablist" className="main-event-list">
                 {this.state.sets.map((v, i) => {
-                  <DrawerEventList set={v} key={i} />;
+                  return <DrawerEventList set={v} keyVal={i} key={i} />;
                 })}
               </div>
             ) : null}
@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   handleClick() {
-    if (this.state.sets.length > 0) {
+    if (this.state.sets !== undefined && this.state.sets.length > 0) {
       this.setState({ showEvents: true });
     } else {
       this.setState({ showEvents: false });
@@ -78,7 +78,8 @@ class App extends Component {
     text.value = "";
 
     this.setState({
-      txt: ""
+      txt: "",
+      showEvents: false
     });
   }
 }

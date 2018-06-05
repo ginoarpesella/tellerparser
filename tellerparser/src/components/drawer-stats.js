@@ -91,7 +91,10 @@ class DrawerStats extends Component {
     if (total !== undefined) {
       return (
         <div>
-          <i class="fas fa-dollar-sign font-awesome-img" title="drawer total" />
+          <i
+            className="fas fa-dollar-sign font-awesome-img"
+            title="drawer total"
+          />
           {total}
         </div>
       );
