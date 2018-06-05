@@ -1,12 +1,9 @@
-//
-
-export function parserTxt(txt) {}
-
-function cleanTxt(txt) {
+export function parserTxt(txt) {
   let lines = getCommands(txt);
   let eventLines = getEventLines(lines);
   let eventLines = eventLines.reverse(); // we reserse here so
   let sets = createSets(eventLines);
+  return sets;
 }
 
 // gets only the lines we want to work with and their line number

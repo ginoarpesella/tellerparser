@@ -11,7 +11,9 @@ class App extends Component {
     this.handleClear = this.handleClear.bind(this);
 
     this.state = {
-      txt: ""
+      txt: "",
+      sets: [],
+      showEvents: false
     };
   }
 
@@ -20,7 +22,13 @@ class App extends Component {
       <form>
         <div className="App">
           <div className="container">
-            <DrawerEventList />
+            {this.state.showEvents ? (
+              <div id="accordion" role="tablist">
+                {this.state.sets.map((v, i) => {
+                  <DrawerEventList set={v} key={i} />;
+                })}
+              </div>
+            ) : null}
             <div className="main-text">
               <textarea
                 name="textarea"
@@ -52,59 +60,16 @@ class App extends Component {
   }
 
   handleChange(e) {
-    let cmds = _parer.getCommands(e.target.value);
-    let foundOpen = false;
-    let foundClose = false;
-    let foundCount = false;
-
-    cmds.forEach(cmd => {
-      if (cmd.trim().endsWith("OPEN")) {
-        this.setState({ openTxt: cmd });
-        foundOpen = true;
-        return;
-      }
-
-      if (cmd.trim().endsWith("CLOSED")) {
-        this.setState({ closeTxt: cmd });
-        foundClose = true;
-        return;
-      }
-
-      if (cmd.includes(";COUNT;")) {
-        this.setState({ countTxt: cmd });
-        foundCount = true;
-      }
-    });
-
     this.setState({ txt: e.target.value });
-    if (!foundOpen) {
-      this.setState({ openTxt: "" });
-    }
-    if (!foundClose) {
-      this.setState({ closeTxt: "" });
-    }
-    if (!foundCount) {
-      this.setState({ countTxt: "" });
-    }
+    let sets = _parer.parserTxt(e.target.value);
+    this.setState({ sets: sets });
   }
 
   handleClick() {
-    if (this.state.openTxt !== "") {
-      this.setState({ openShow: true });
+    if (this.state.sets.length > 0) {
+      this.setState({ showEvents: true });
     } else {
-      this.setState({ openShow: false });
-    }
-
-    if (this.state.closeTxt !== "") {
-      this.setState({ closeShow: true });
-    } else {
-      this.setState({ closeShow: false });
-    }
-
-    if (this.state.countTxt !== "") {
-      this.setState({ countShow: true });
-    } else {
-      this.setState({ countShow: false });
+      this.setState({ showEvents: false });
     }
   }
 
