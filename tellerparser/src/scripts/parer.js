@@ -1,5 +1,6 @@
 // everthings_equal is a function that takes an array
 const everythings_equal = array => array.every(a => a === array[0]);
+export const onlyUnique = (value, index, self) => self.indexOf(value) === index;
 
 class Set {
   constructor(cmd, lNo) {
@@ -83,7 +84,6 @@ export function getDrawerTotal(txt) {
     let row = v.split(",");
     return row[4];
   });
-
   let total = values.reduce((p, c, i) => {
     return isNaN(c) ? parseFloat(p) + 0.0 : parseFloat(p) + parseFloat(c);
   });
@@ -133,19 +133,35 @@ function createSets(eventLines) {
   let sets = [];
   while (eventLines.length > 0) {
     let set = [];
+    let foundOpen = false;
+    let foundClose = false;
+    let foundCount = false;
+
     for (let i = 0; i < eventLines.length; i++) {
       if (isOpen(eventLines[i].cmd)) {
+        if (foundOpen) {
+          break;
+        }
         set.push(eventLines[i]);
+        foundOpen = true;
         break;
       }
 
       if (isClose(eventLines[i].cmd)) {
+        if (foundClose) {
+          break;
+        }
         set.push(eventLines[i]);
+        foundClose = true;
         continue;
       }
 
       if (isCount(eventLines[i].cmd)) {
+        if (foundCount) {
+          break;
+        }
         set.push(eventLines[i]);
+        foundCount = true;
         continue;
       }
     }

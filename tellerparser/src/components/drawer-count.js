@@ -8,7 +8,7 @@ import * as _parer from "../scripts/parer.js";
 class DrawerCount extends Component {
   render() {
     return (
-      <div className={this.props.classStyle}>
+      <div className={this.props.classStyle + " raised-border"}>
         <div className="section-header">
           <i className="fas fa-money-bill-alt font-awesome-head-img" /> Drawer
           Counts{" "}

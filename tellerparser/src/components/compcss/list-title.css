@@ -1,10 +1,22 @@
 .list-title-badge {
-  font-size: 0.5em;
+  font-size: 0.7em;
   float: right;
   margin-top: 6px;
 }
 
-.raw-drawer-txt {
-  padding: 5px;
-  font: 0.5em;
+.title-group {
+  float:left;
+  text-align: left;
+  margin-left: 25px;
+}
+
+.title-group label {
+  color: rgb(34, 34, 34);
+  font-size: 0.6em;
+  padding-right: 5px;
+}
+
+.font-awesome-img-title {
+  padding-right: 15px;
+  font-size: 1.3em;
 }

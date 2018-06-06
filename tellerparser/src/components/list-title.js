@@ -7,37 +7,49 @@ class ListTitle extends Component {
     let faults = 0;
     faults = this.validate();
     return (
-      <span>
-        {this.hasOpen() ? (
+      <div>
+        <span className="title-group">
           <span>
             <i
-              className="fas fa-lock-open font-awesome-img"
-              title="open found"
+              className="fas fa-id-card-alt font-awesome-img-title"
+              title="drawer id"
             />
+            <label>{this.getDrawerIds()}</label>
           </span>
-        ) : null}
+          {this.hasOpen() ? (
+            <span>
+              <i
+                className="fas fa-lock-open font-awesome-img-title"
+                title="open found"
+              />
+            </span>
+          ) : null}
 
-        {this.hasClose() ? (
-          <span>
-            <i className="fas fa-lock font-awesome-img" title="close found" />
-          </span>
-        ) : null}
+          {this.hasClose() ? (
+            <span>
+              <i
+                className="fas fa-lock font-awesome-img-title"
+                title="close found"
+              />
+            </span>
+          ) : null}
 
-        {this.hasCount() ? (
-          <span>
-            <i
-              className="fas fa-money-bill-alt font-awesome-img"
-              title="count found"
-            />
-          </span>
-        ) : null}
-
+          {this.hasCount() ? (
+            <span>
+              <i
+                className="fas fa-money-bill-alt font-awesome-img-title"
+                title="count found"
+              />
+              <label>{this.getSequenceNumber()}</label>
+            </span>
+          ) : null}
+        </span>
         {faults > 0 ? (
           <span className="badge badge-pill badge-danger list-title-badge">
             {faults}
           </span>
         ) : null}
-      </span>
+      </div>
     );
   }
 
@@ -77,6 +89,29 @@ class ListTitle extends Component {
     }
 
     return faults;
+  }
+
+  getSequenceNumber() {
+    for (let i = 0; i < this.props.set.length; i++) {
+      if (_parser.isCount(this.props.set[i].cmd)) {
+        return _parser.getSequenceNumber(this.props.set[i].cmd);
+      }
+    }
+  }
+
+  getDrawerIds() {
+    let list = [];
+    for (let i = 0; i < this.props.set.length; i++) {
+      list.push(_parser.getDrawerId(this.props.set[i].cmd));
+    }
+
+    let uniqeList = list.filter(_parser.onlyUnique);
+    let ids = "";
+    uniqeList.forEach(el => {
+      ids = ids + " " + el;
+    });
+
+    return ids.trim();
   }
 }
 

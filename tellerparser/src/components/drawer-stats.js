@@ -5,7 +5,7 @@ import * as _parser from "../scripts/parer.js";
 class DrawerStats extends Component {
   render() {
     return (
-      <div className="drawer-stats">
+      <div className="drawer-stats raised-border">
         <div className="section-header">
           <i className="fas fa-clipboard-check font-awesome-head-img" />Stats
         </div>
@@ -25,6 +25,10 @@ class DrawerStats extends Component {
     ids = ids.filter(a => {
       return a.length > 0;
     });
+
+    if (ids.length === 0) {
+      return;
+    }
 
     // everthings_equal is a function that takes an array
     const everythings_equal = array => array.every(a => a === array[0]);
@@ -87,18 +91,21 @@ class DrawerStats extends Component {
   }
 
   drawerTotal() {
-    let total = _parser.getDrawerTotal(this.props.countTxt);
-    if (total !== undefined) {
-      return (
-        <div>
-          <i
-            className="fas fa-dollar-sign font-awesome-img"
-            title="drawer total"
-          />
-          {total}
-        </div>
-      );
+    if (this.props.countTxt) {
+      let total = _parser.getDrawerTotal(this.props.countTxt);
+      if (total !== undefined) {
+        return (
+          <div>
+            <i
+              className="fas fa-dollar-sign font-awesome-img"
+              title="drawer total"
+            />
+            {total}
+          </div>
+        );
+      }
     }
+
     return;
   }
 }

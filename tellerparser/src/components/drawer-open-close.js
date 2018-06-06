@@ -7,9 +7,9 @@ import * as _parer from "../scripts/parer.js";
 class DrawerOpenClose extends Component {
   render() {
     return (
-      <div className={this.props.classStyle}>
+      <div className={this.props.classStyle + " raised-border"}>
         <div className="section-header">
-          {this.props.classStyle === "open-drawer" ? (
+          {this.props.classStyle.includes("open-drawer") ? (
             <span>
               <i className="fas fa-lock-open font-awesome-head-img" />Open
             </span>

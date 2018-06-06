@@ -34,7 +34,7 @@ class DrawerEventList extends Component {
             role="tab"
             id={"heading_" + this.props.keyVal}
           >
-            <h3 className="mb-0">
+            <div className="mb-0">
               <a
                 data-toggle="collapse"
                 href={"#collapse_" + this.props.keyVal}
@@ -44,7 +44,7 @@ class DrawerEventList extends Component {
               >
                 <ListTitle set={this.props.set} />
               </a>
-            </h3>
+            </div>
           </div>
           <div
             id={"collapse_" + this.props.keyVal}
@@ -64,6 +64,12 @@ class DrawerEventList extends Component {
                         lineNumber={this.state.openLineNumber}
                       />
                     ) : null}
+                  </div>
+                  <div className="col-2">
+                    <RawDrawerPopover
+                      set={this.props.set}
+                      keyVal={this.props.keyVal}
+                    />
                   </div>
                   <div className="col">
                     {this.state.closeTxt ? (
