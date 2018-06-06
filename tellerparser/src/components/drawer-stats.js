@@ -9,9 +9,13 @@ class DrawerStats extends Component {
         <div className="section-header">
           <i className="fas fa-clipboard-check font-awesome-head-img" />Stats
         </div>
-        {this.validateDrawerId()}
-        {this.showTimes()}
-        {this.drawerTotal()}
+        <div className="container">
+          <div className="row">
+            <div className="col">{this.validateDrawerId()}</div>
+            <div className="col">{this.showTimes()}</div>
+            <div className="col">{this.drawerTotal()}</div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -34,10 +38,10 @@ class DrawerStats extends Component {
     const everythings_equal = array => array.every(a => a === array[0]);
     if (everythings_equal(ids)) {
       return (
-        <div className="">
+        <span className="drawer-stat">
           <i className="fas fa-id-card font-awesome-img" title="Drawer Id" />
           {ids[0]}
-        </div>
+        </span>
       );
     } else {
       return (
@@ -64,7 +68,7 @@ class DrawerStats extends Component {
     }
 
     return (
-      <div>
+      <span className="drawer-stat">
         {openCloseDiff > 0 ? (
           <span>
             <i
@@ -86,7 +90,7 @@ class DrawerStats extends Component {
             />
           </span>
         ) : null}
-      </div>
+      </span>
     );
   }
 
@@ -95,13 +99,13 @@ class DrawerStats extends Component {
       let total = _parser.getDrawerTotal(this.props.countTxt);
       if (total !== undefined) {
         return (
-          <div>
+          <span className="drawer-stat">
             <i
               className="fas fa-dollar-sign font-awesome-img"
               title="drawer total"
             />
             {total}
-          </div>
+          </span>
         );
       }
     }

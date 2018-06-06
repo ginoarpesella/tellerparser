@@ -1,3 +1,8 @@
 .time-in-seconds {
   font-size: 1.2em;
 }
+
+.drawer-stat {
+  margin-left: 35px;
+  margin-right: 35px;
+}

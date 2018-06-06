@@ -1,5 +1,5 @@
 html, body {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(23, 24, 34);
 }
 
 .App {
@@ -44,27 +44,25 @@ html, body {
 }
 
 .main-info {
-  margin: 10px;
-  padding: 10px;
-  font-size: 0.9em;
-  max-width: 990px;
+  font-size: 0.8em;
 }
 
 .btn-parse {
-  margin: 15px;
+  margin: 15px; 
+}
+
+.font-awesome-head-img {
+  margin-right: 5px;
+  margin-top: 5px;
+  font-size: 1.2em; 
+  color: rgb(255, 153, 36);
 }
 
 .font-awesome-img {
   font-size: 1.2em; 
-  color: rgb(7, 52, 87);
+  color: rgb(240, 149, 64);
   margin-right: 5px;
   margin-left: 5px;
-}
-
-.font-awesome-head-img {
-  padding-right: 5px;
-  font-size: 1.2em; 
-  color: rgb(33, 105, 240);
 }
 
 .section-header {
@@ -95,9 +93,9 @@ html, body {
 }
 
 .raised-border {
-  border-radius: 4px;  
-  color: rgb(20, 20, 20);
+  border-radius: 2px;  
+  color: rgb(0, 0, 0);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(246, 246, 250);
 }
 /* main frames - end */

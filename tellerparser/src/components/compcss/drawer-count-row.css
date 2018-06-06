@@ -1,7 +1,6 @@
 /* coin pockets */
 .drawer-coin {
-    color: rgb(229, 226, 226);
-    padding-top: 4px;
+    color: rgb(235, 235, 235);
 }
 
 .drawer-coin > div {
@@ -11,9 +10,10 @@
 .coin-pocket {
     min-width: 100px;
     min-height: 80px;
-    border-radius: 5px;
+    border-radius: 2px;
     border: solid rgb(229, 226, 226) 1px;
     margin: 6px;
+    background-color: rgb(41, 41, 41);
 }
 
 .coin-pocket-header {
@@ -21,7 +21,8 @@
 }
 
 .coin-pocket-header i {
-    padding: 4px;
+    margin-top: 15px;
+    margin-right: 5px;
     font-size: 1em;
     color: #f9fc50;
 }
@@ -37,7 +38,7 @@
 }
 
 .note-pocket {
-    border-radius: 4px;
+    border-radius: 2px;
     border: solid rgb(229, 226, 226) 1px;
     margin: 5px;
 }

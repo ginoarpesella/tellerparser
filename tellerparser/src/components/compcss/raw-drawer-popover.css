@@ -1,5 +1,12 @@
-.raw-drawer {
+.raw-drawer-txt {
   padding: 5px;
   font-size: 0.9em;
   max-width: 500px;
+}
+
+.copy-raw-txt {
+  font-size: 1.9em;
+  margin: 14px;
+  color: rgb(12, 45, 105);
+  cursor: pointer;
 }

@@ -29,29 +29,35 @@ class App extends Component {
                 })}
               </div>
             ) : null}
-            <div className="main-text">
-              <textarea
-                name="textarea"
-                className="main-textarea form-control"
-                placeholder="-- put stuff in here --"
-                value={this.state.txt}
-                onChange={this.handleChange}
-              />
-            </div>
+
             <div>
-              <input
-                type="button"
-                ref="main_textarea"
-                value="Parse"
-                className="btn btn-primary btn-parse"
-                onClick={this.handleClick}
-              />
-              <input
-                type="button"
-                value="Clear"
-                className="btn btn-primary btn-parse"
-                onClick={this.handleClear}
-              />
+              {this.state.showEvents ? (
+                <input
+                  type="button"
+                  value="Clear"
+                  className="btn btn-outline-secondary btn-parse"
+                  onClick={this.handleClear}
+                />
+              ) : (
+                <div>
+                  <div className="main-text">
+                    <textarea
+                      name="textarea"
+                      className="main-textarea form-control"
+                      placeholder="-- put stuff in here --"
+                      value={this.state.txt}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <input
+                    type="button"
+                    ref="main_textarea"
+                    value="Parse"
+                    className="btn btn-outline-secondary btn-parse"
+                    onClick={this.handleClick}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -74,9 +80,6 @@ class App extends Component {
   }
 
   handleClear() {
-    let text = this.refs.main_textarea;
-    text.value = "";
-
     this.setState({
       txt: "",
       showEvents: false

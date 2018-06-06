@@ -7,48 +7,58 @@ class ListTitle extends Component {
     let faults = 0;
     faults = this.validate();
     return (
-      <div>
-        <span className="title-group">
-          <span>
+      <div className="container">
+        <div className="row title-group">
+          <div className="col">
             <i
               className="fas fa-id-card-alt font-awesome-img-title"
               title="drawer id"
             />
             <label>{this.getDrawerIds()}</label>
-          </span>
-          {this.hasOpen() ? (
-            <span>
-              <i
-                className="fas fa-lock-open font-awesome-img-title"
-                title="open found"
-              />
-            </span>
-          ) : null}
+          </div>
 
-          {this.hasClose() ? (
-            <span>
-              <i
-                className="fas fa-lock font-awesome-img-title"
-                title="close found"
-              />
-            </span>
-          ) : null}
-
-          {this.hasCount() ? (
-            <span>
-              <i
-                className="fas fa-money-bill-alt font-awesome-img-title"
-                title="count found"
-              />
-              <label>{this.getSequenceNumber()}</label>
-            </span>
-          ) : null}
-        </span>
-        {faults > 0 ? (
-          <span className="badge badge-pill badge-danger list-title-badge">
-            {faults}
-          </span>
-        ) : null}
+          <div className="col-1">
+            {this.hasOpen() ? (
+              <span className="title-group-center">
+                <i
+                  className="fas fa-lock-open font-awesome-img-title"
+                  title="open found"
+                />
+              </span>
+            ) : null}
+          </div>
+          <div className="col-1">
+            {this.hasClose() ? (
+              <span className="title-group-center">
+                <i
+                  className="fas fa-lock font-awesome-img-title"
+                  title="close found"
+                />
+              </span>
+            ) : null}
+          </div>
+          <div className="col-2">
+            {this.hasCount() ? (
+              <span className="title-group-right">
+                <i
+                  className="fas fa-money-bill-alt font-awesome-img-title"
+                  title="count found"
+                />
+                <label>{this.getSequenceNumber()}</label>
+              </span>
+            ) : null}
+          </div>
+          <div className="col-1">
+            {faults > 0 ? (
+              <span
+                className="badge badge-pill badge-danger list-title-badge"
+                title="faults"
+              >
+                {faults}
+              </span>
+            ) : null}
+          </div>
+        </div>
       </div>
     );
   }

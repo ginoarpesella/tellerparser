@@ -5,6 +5,7 @@ import DrawerStats from "./drawer-stats";
 import ListTitle from "./list-title";
 import RawDrawerPopover from "./raw-drawer-popover";
 import * as _parser from "../scripts/parer";
+import "./compcss/drawer-event-list.css";
 
 class DrawerEventList extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class DrawerEventList extends Component {
       <div id="accordion" role="tablist">
         <div className="card">
           <div
-            className="card-header"
+            className="card-header card-header-alt"
             role="tab"
             id={"heading_" + this.props.keyVal}
           >
@@ -53,7 +54,7 @@ class DrawerEventList extends Component {
             aria-labelledby={"heading_" + this.props.keyVal}
             data-parent="#accordion"
           >
-            <div className="card-body">
+            <div className="card-body drawer-event-panel">
               <div className="main-info">
                 <div className="row">
                   <div className="col">
@@ -65,7 +66,7 @@ class DrawerEventList extends Component {
                       />
                     ) : null}
                   </div>
-                  <div className="col-2">
+                  <div className="col-1">
                     <RawDrawerPopover
                       set={this.props.set}
                       keyVal={this.props.keyVal}

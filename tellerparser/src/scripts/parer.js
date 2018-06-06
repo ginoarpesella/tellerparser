@@ -88,7 +88,7 @@ export function getDrawerTotal(txt) {
     return isNaN(c) ? parseFloat(p) + 0.0 : parseFloat(p) + parseFloat(c);
   });
 
-  return total;
+  return total.toFixed(2);
 }
 
 export function isOpen(line) {
