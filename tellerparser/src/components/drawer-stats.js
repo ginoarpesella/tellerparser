@@ -75,7 +75,7 @@ class DrawerStats extends Component {
               className="fas fa-lock-open font-awesome-img"
               title="open drawer"
             />
-            <span className="time-in-seconds">{openCloseDiff}</span>
+            <span className="time-in-seconds">{openCloseDiff} sec</span>
             <i className="fas fa-lock font-awesome-img" title="closed drawer" />
           </span>
         ) : null}
@@ -83,7 +83,7 @@ class DrawerStats extends Component {
         {closeCountDiff > 0 ? (
           <span>
             <i className="fas fa-lock font-awesome-img" title="closed drawer" />
-            <span className="time-in-seconds">{closeCountDiff}</span>
+            <span className="time-in-seconds">{closeCountDiff} sec</span>
             <i
               className="fas fa-money-bill-alt font-awesome-img"
               title="count"
