@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import DrawerEventList from "./components/drawer-event-list";
+import NavBar from "./components/nav-bar";
 import * as _parer from "./scripts/parer.js";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <form>
+        <NavBar />
         <div className="App">
           <div className="container">
             {this.state.showEvents ? (
@@ -29,7 +31,6 @@ class App extends Component {
                 })}
               </div>
             ) : null}
-
             <div>
               {this.state.showEvents ? (
                 <input
