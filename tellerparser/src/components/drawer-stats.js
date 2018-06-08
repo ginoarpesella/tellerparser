@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./compcss/drawer-stats.css";
-import * as _parser from "../scripts/parer.js";
+import * as _parser from "../scripts/parser";
 
 class DrawerStats extends Component {
   render() {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./compcss/drawer-open-close.css";
 import IDDateTime from "./id-date-time";
 import LineNumber from "./line-number";
-import * as _parer from "../scripts/parer.js";
+import * as _parer from "../scripts/parser";
 
 class DrawerOpenClose extends Component {
   render() {

@@ -3,7 +3,7 @@ import "./compcss/drawer-count.css";
 import DrawerContents from "./drawer-contents";
 import IDDateTime from "./id-date-time";
 import LineNumber from "./line-number";
-import * as _parer from "../scripts/parer.js";
+import * as _parer from "../scripts/parser";
 
 class DrawerCount extends Component {
   render() {

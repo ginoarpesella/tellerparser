@@ -1,90 +1,48 @@
 import React, { Component } from "react";
 import "./App.css";
-import DrawerEventList from "./components/drawer-event-list";
-import NavBar from "./components/nav-bar";
-import * as _parer from "./scripts/parer.js";
+import "./components/compcss/nav-bar.css";
+import MainParser from "./components/main-parser";
+import LiveFeed from "./components/live-feed";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-
-    this.state = {
-      txt: "",
-      sets: [],
-      showEvents: false
-    };
-  }
-
   render() {
     return (
-      <form>
-        <NavBar />
-        <div className="App">
-          <div className="container">
-            {this.state.showEvents ? (
-              <div id="accordion" role="tablist" className="main-event-list">
-                {this.state.sets.map((v, i) => {
-                  return <DrawerEventList set={v} keyVal={i} key={i} />;
-                })}
-              </div>
-            ) : null}
-            <div>
-              {this.state.showEvents ? (
-                <input
-                  type="button"
-                  value="Clear"
-                  className="btn btn-outline-secondary btn-parse"
-                  onClick={this.handleClear}
-                />
-              ) : (
-                <div>
-                  <div className="main-text">
-                    <textarea
-                      name="textarea"
-                      className="main-textarea form-control"
-                      placeholder="-- put stuff in here --"
-                      value={this.state.txt}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <input
-                    type="button"
-                    ref="main_textarea"
-                    value="Parse"
-                    className="btn btn-outline-secondary btn-parse"
-                    onClick={this.handleClick}
-                  />
-                </div>
-              )}
+      <Router>
+        <form>
+          <nav className="navbar navbar-expand-lg sticky-top navbar-dark nav-bg">
+            <span className="navbar-brand">Tellerparser</span>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Parser
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/livefeed" className="nav-link">
+                    Live Feed
+                  </Link>
+                </li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </form>
+          </nav>
+          <Route exact path="/" component={MainParser} />
+          <Route path="/livefeed" component={LiveFeed} />
+        </form>
+      </Router>
     );
-  }
-
-  handleChange(e) {
-    this.setState({ txt: e.target.value });
-    let sets = _parer.parserTxt(e.target.value);
-    this.setState({ sets: sets });
-  }
-
-  handleClick() {
-    if (this.state.sets !== undefined && this.state.sets.length > 0) {
-      this.setState({ showEvents: true });
-    } else {
-      this.setState({ showEvents: false });
-    }
-  }
-
-  handleClear() {
-    this.setState({
-      txt: "",
-      showEvents: false
-    });
   }
 }
 

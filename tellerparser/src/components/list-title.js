@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as _parser from "../scripts/parer";
+import * as _parser from "../scripts/parser";
 import "./compcss/list-title.css";
 
 class ListTitle extends Component {

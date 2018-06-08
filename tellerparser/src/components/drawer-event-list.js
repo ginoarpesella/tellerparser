@@ -4,7 +4,7 @@ import DrawerCount from "./drawer-count";
 import DrawerStats from "./drawer-stats";
 import ListTitle from "./list-title";
 import RawDrawerPopover from "./raw-drawer-popover";
-import * as _parser from "../scripts/parer";
+import * as _parser from "../scripts/parser";
 import "./compcss/drawer-event-list.css";
 
 class DrawerEventList extends Component {

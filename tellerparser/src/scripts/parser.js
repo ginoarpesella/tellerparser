@@ -92,11 +92,11 @@ export function getDrawerTotal(txt) {
 }
 
 export function isOpen(line) {
-  return line.trim().endsWith(";OPEN") ? true : false;
+  return line.trim().includes(";OPEN") ? true : false;
 }
 
 export function isClose(line) {
-  return line.trim().endsWith(";CLOSED") ? true : false;
+  return line.trim().includes(";CLOSED") ? true : false;
 }
 
 export function isCount(line) {
@@ -113,15 +113,15 @@ function getEventLines(lines) {
 
   for (let i = 0; i < lines.length; i++) {
     if (isOpen(lines[i])) {
-      cleanLines.push(new Set(lines[i], i));
+      cleanLines.push(new Set(cleanOpen(lines[i]), i));
     }
 
     if (isClose(lines[i])) {
-      cleanLines.push(new Set(lines[i], i));
+      cleanLines.push(new Set(cleanClose(lines[i]), i));
     }
 
     if (isCount(lines[i])) {
-      cleanLines.push(new Set(lines[i], i));
+      cleanLines.push(new Set(cleanCount(lines[i]), i));
     }
   }
 
@@ -171,4 +171,46 @@ function createSets(eventLines) {
   }
 
   return sets;
+}
+
+const trimEnd = (line, anchor) => {
+  return line.substring(0, line.indexOf(anchor) + anchor.length);
+};
+
+// this can only
+const trimStart = line => {
+  let lineSplit = line.split(";").reverse();
+  if (lineSplit[2].length !== 21) {
+    lineSplit[2] = cleanId(lineSplit[2]);
+  }
+
+  return lineSplit
+    .slice(0, 3)
+    .reverse()
+    .join(";");
+};
+
+const cleanId = line => {
+  return line.substring(line.length - 21, line.length);
+};
+
+//82600-001-180130-0000;2018-02-26T12:53:31;OPEN
+function cleanOpen(line) {
+  let cleanLine = trimEnd(line, ";OPEN");
+  return trimStart(cleanLine);
+}
+
+//82600-001-180130-0000;2018-02-26T13:11:35;CLOSED
+function cleanClose(line) {
+  let cleanLine = trimEnd(line, ";CLOSE");
+  return trimStart(cleanLine);
+}
+
+function cleanCount(line) {}
+
+function cleanCount(line) {
+  let anchor = ";COUNT";
+  let index = line.indexOf(anchor);
+  let subLine = line.substring(0, index + anchor.length);
+  return trimStart(subLine) + line.substring(index + anchor.length);
 }
