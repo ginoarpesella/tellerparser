@@ -37,6 +37,19 @@ class ListTitle extends Component {
               </span>
             ) : null}
           </div>
+          <div className="col-1">
+            {this.hasCount() && this.hasClose() ? (
+              <span
+                className={
+                  this.getSettleTimeClassName(this.getSettleTime()) +
+                  " list-title-badge"
+                }
+                title="settle time in seconds"
+              >
+                {this.getSettleTime()}
+              </span>
+            ) : null}
+          </div>
           <div className="col-2">
             {this.hasCount() ? (
               <span className="title-group-right">
@@ -122,6 +135,36 @@ class ListTitle extends Component {
     });
 
     return ids.trim();
+  }
+
+  getSettleTime() {
+    let closeTime;
+    let countTime;
+
+    for (let i = 0; i < this.props.set.length; i++) {
+      if (_parser.isClose(this.props.set[i].cmd)) {
+        closeTime = _parser.getDateTime(this.props.set[i].cmd);
+      } else if (_parser.isCount(this.props.set[i].cmd)) {
+        countTime = _parser.getDateTime(this.props.set[i].cmd);
+      }
+    }
+
+    if (closeTime !== undefined && countTime !== undefined) {
+      let diff = Math.abs(countTime - closeTime);
+      return Math.ceil(diff / 1000); // to seconds
+    }
+
+    return -1;
+  }
+
+  getSettleTimeClassName(num) {
+    if (num <= 5) {
+      return "badge badge-pill badge-success";
+    } else if (num >= 6 && num <= 8) {
+      return "badge badge-pill badge-warning";
+    } else {
+      return "badge badge-pill badge-danger";
+    }
   }
 }
 

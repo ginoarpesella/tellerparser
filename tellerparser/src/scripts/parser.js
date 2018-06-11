@@ -56,7 +56,11 @@ export function getSequenceNumber(txt) {
   if (lineSplit.length === 0) {
     return;
   }
-  return lineSplit[3];
+  if (isNaN(lineSplit[3])) {
+    return lineSplit[3];
+  } else {
+    return parseInt(lineSplit[3]).toString();
+  }
 }
 
 // extracts the the count rows from a string
@@ -202,7 +206,7 @@ function cleanOpen(line) {
 
 //82600-001-180130-0000;2018-02-26T13:11:35;CLOSED
 function cleanClose(line) {
-  let cleanLine = trimEnd(line, ";CLOSE");
+  let cleanLine = trimEnd(line, ";CLOSED");
   return trimStart(cleanLine);
 }
 
