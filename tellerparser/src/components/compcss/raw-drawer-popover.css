@@ -6,7 +6,7 @@
 
 .copy-raw-txt {
   font-size: 1.9em;
-  margin: 14px;
+  padding: 14px 0px;
   color: rgb(12, 45, 105);
   cursor: pointer;
 }

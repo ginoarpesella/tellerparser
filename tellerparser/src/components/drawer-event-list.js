@@ -66,7 +66,7 @@ class DrawerEventList extends Component {
                       />
                     ) : null}
                   </div>
-                  <div className="col-1">
+                  <div className="col-2">
                     <RawDrawerPopover
                       set={this.props.set}
                       keyVal={this.props.keyVal}
