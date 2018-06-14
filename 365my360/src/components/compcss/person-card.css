@@ -1,6 +1,22 @@
+.person-card {
+  background-color: rgb(240, 240, 240);
+  margin: 10px 5px;
+}
+
+.person-card-body {
+  height: 100%;
+}
+
 .person-card-img {
-  max-width: 250px;
-  max-height: 250px;
+  width: 150px;
+  height: 150px;
   display: block;
-  margin: auto;
+  margin: 10px auto auto auto;
+  
+}
+
+.raised-border {
+  color: rgb(0, 0, 0);
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+  background-color: rgb(246, 246, 250);
 }

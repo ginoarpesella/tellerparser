@@ -4,31 +4,32 @@ import "./compcss/person-card.css";
 class PersonCard extends Component {
   render() {
     return (
-      <div className="card">
+      <div className="card person-card">
         {/* image */}
         <img
-          className="card-img-top rounded-circle person-card-img"
+          className="card-img-top rounded-circle person-card-img raised-border"
           src={this.props.img}
           alt="Card"
         />
         {/* body */}
-        <div className="card-body">
-          <h5 className="card-title">[First and lastname]</h5>
-          <p className="card-text">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </p>
+        <div className="card-body person-card-body">
+          <h5 className="card-title">{this.props.name}</h5>
+          <p className="card-text">{this.props.bio}</p>
         </div>
         {/* footer */}
         <div className="card-footer">
           <small className="text-muted">
-            <a href="#">Send [First and lastname] a personal message</a>
+            <a href="#" onClick={this.handleClick}>
+              Send {this.props.name} a message
+            </a>
           </small>
         </div>
       </div>
     );
+  }
+
+  handleClick(e) {
+    e.preventDefault();
   }
 }
 
