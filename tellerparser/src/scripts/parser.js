@@ -210,8 +210,6 @@ function cleanClose(line) {
   return trimStart(cleanLine);
 }
 
-function cleanCount(line) {}
-
 function cleanCount(line) {
   let anchor = ";COUNT";
   let index = line.indexOf(anchor);
