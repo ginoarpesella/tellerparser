@@ -1,4 +1,7 @@
 # tellerparser
+
+NOTE! This project no longer works due to the changes made in react. I have no need to fix this project at this point
+
 http://162.13.81.43:3001/
 
 
